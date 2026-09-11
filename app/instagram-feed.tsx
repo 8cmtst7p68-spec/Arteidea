@@ -25,12 +25,13 @@ export function InstagramFeed() {
         const shadowRoot = root.shadowRoot;
         if (!shadowRoot) return;
 
-        if (!shadowRoot.querySelector("style[data-arteidea-full-width]")) {
-          const widthOverride = document.createElement("style");
+        let widthOverride = shadowRoot.querySelector<HTMLStyleElement>("style[data-arteidea-full-width]");
+        if (!widthOverride) {
+          widthOverride = document.createElement("style");
           widthOverride.dataset.arteideaFullWidth = "true";
-          widthOverride.textContent = ":host{width:100% !important;max-width:none !important}.es-load-more-button-container{position:absolute !important;width:1px !important;height:1px !important;overflow:hidden !important;clip-path:inset(50%) !important;pointer-events:none !important}";
           shadowRoot.append(widthOverride);
         }
+        widthOverride.textContent = ":host{width:100% !important;max-width:none !important}.es-load-more-button-container{position:absolute !important;width:1px !important;height:1px !important;overflow:hidden !important;clip-path:inset(50%) !important;pointer-events:none !important}a[href*='elfsight.com']{border:1px solid rgba(58,24,37,.12) !important;border-radius:999px !important;background:rgba(255,253,247,.82) !important;color:#745865 !important;box-shadow:0 5px 14px rgba(58,24,37,.1) !important;opacity:.82 !important;transform:scale(.9) !important;transform-origin:center !important}";
 
         const masonry = shadowRoot.querySelector<HTMLElement>(".es-masonry-layout");
         const loadMore = shadowRoot.querySelector<HTMLButtonElement>(".es-load-more-button");
