@@ -3,6 +3,7 @@ import { Gift, Heart, MapPin } from "lucide-react";
 import { collections } from "./site-data";
 import { Footer, Header, TripadvisorIcon } from "./site-shell";
 import { ReviewsCarousel } from "./reviews-carousel";
+import { InstagramFeed } from "./instagram-feed";
 
 export default function Home(){return <main><Header/>
   <section className="hero">
@@ -31,6 +32,8 @@ export default function Home(){return <main><Header/>
   <section className="bespoke"><div className="bespoke-sticky pop-in"><p className="kicker light"><Heart size={16}/> Il laboratorio di Alessia</p><h2>Alcune idee<br/><em>nascono qui.</em></h2><p>Nel laboratorio Arteidea Alessia realizza, assembla e rifinisce una parte delle proposte presenti in negozio. Quando l’articolo lo consente può inoltre intervenire su nomi, messaggi, colori o confezioni, spiegando prima quali modifiche sono possibili e quali tempi richiedono.</p><Link className="button cream" href="/personalizzazioni">Scopri le personalizzazioni</Link></div><div className="journey"><a className="journey-card pop-in" href="https://wa.me/393471526803?text=Ciao%20Arteidea%2C%20vorrei%20sapere%20se%20un%20articolo%20è%20personalizzabile" target="_blank" rel="noreferrer"><span className="journey-icon">💌</span><div><h3>Descrivi la richiesta</h3><p>Indica occasione, articolo, quantità, colori e data desiderata. Una fotografia di riferimento può aiutare a capire il gusto, ma la fattibilità viene sempre verificata sui materiali disponibili.</p></div><b>Invia i dettagli</b></a><Link className="journey-card pop-in delay-1" href="/personalizzazioni"><span className="journey-icon">🎨</span><div><h3>Verifica le possibilità</h3><p>Non tutto è modificabile: Alessia distingue subito tra prodotto pronto, lavorazione di laboratorio e articolo personalizzabile, proponendo soltanto soluzioni realmente realizzabili.</p></div><b>Scopri il servizio</b></Link><Link className="journey-card pop-in delay-2" href="/contatti"><span className="journey-icon">✨</span><div><h3>Scegli dal vivo</h3><p>Confrontare colori, misure, materiali e confezioni in negozio permette di decidere meglio, soprattutto per bomboniere, coordinati e ordini in quantità.</p></div><b>Orari e indirizzo</b></Link></div></section>
 
   <section className="gallery-section"><div className="gallery-heading pop-in"><div><p className="kicker">Uno sguardo dentro</p><h2>Il negozietto è<br/><em>una scoperta continua.</em></h2></div><p className="gallery-copy">Gli scaffali cambiano insieme alle stagioni, alle feste e alle nuove lavorazioni del laboratorio. Le fotografie raccontano solo una parte di Arteidea: passa a curiosare e lasciati sorprendere. Se cerchi un modello preciso o molte quantità, puoi anche contattarci in anticipo.</p></div><div className="gallery-grid"><figure className="gallery-large pop-in"><img src="/arteidea-gallery/698.jpg" alt="Bomboniere e accessori esposti da Arteidea"/><figcaption>Bomboniere e dettagli per le feste</figcaption></figure><figure className="pop-in delay-1"><img src="/arteidea-gallery/700.jpg" alt="Decorazioni per la casa"/><figcaption>Piccoli oggetti per la casa</figcaption></figure><figure className="pop-in delay-2"><img src="/arteidea-gallery/704.jpg" alt="Idee regalo illustrate"/><figcaption>Pensieri per ogni occasione</figcaption></figure></div></section>
+
+  <InstagramFeed/>
 
   <ReviewsCarousel/>
 
