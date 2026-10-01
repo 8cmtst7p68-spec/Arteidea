@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, X } from "lucide-react";
 import styles from "./review-invite.module.css";
+import { externalContentEvent, getExternalContentChoice } from "./external-content-consent";
 
 const seenKey = "arteidea-review-invite-seen";
 
@@ -36,7 +37,7 @@ export function ReviewInvite() {
     let elapsed = false;
     let explored = false;
     const showIfReady = () => {
-      if (!elapsed || !explored || usedManually.current) return;
+      if (!elapsed || !explored || usedManually.current || getExternalContentChoice() === null) return;
       setOpen(true);
       try { window.localStorage.setItem(seenKey, "1"); } catch { /* Storage opzionale. */ }
       window.removeEventListener("scroll", onScroll);
@@ -47,8 +48,9 @@ export function ReviewInvite() {
     };
     const timer = window.setTimeout(() => { elapsed = true; showIfReady(); }, 25000);
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener(externalContentEvent, showIfReady);
     onScroll();
-    return () => { window.clearTimeout(timer); window.removeEventListener("scroll", onScroll); };
+    return () => { window.clearTimeout(timer); window.removeEventListener("scroll", onScroll); window.removeEventListener(externalContentEvent, showIfReady); };
   }, []);
 
   useEffect(() => {

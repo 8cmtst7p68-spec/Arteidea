@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { CookieBanner } from "./cookie-banner";
 
 export const metadata: Metadata = {
   title: "Arteidea Genova | Bomboniere, bijoux e creazioni artigianali",
@@ -18,5 +19,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#701137" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="it"><body>{children}</body></html>;
+  return <html lang="it"><body>{children}<CookieBanner/></body></html>;
 }

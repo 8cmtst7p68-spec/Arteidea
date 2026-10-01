@@ -1,0 +1,12 @@
+.banner { position: fixed; z-index: 200; right: clamp(12px,3vw,40px); bottom: clamp(12px,3vw,32px); left: clamp(12px,3vw,40px); display: grid; grid-template-columns: 52px minmax(0,1fr) auto; align-items: center; gap: 20px; max-width: 1180px; margin: 0 auto; padding: 20px 24px; border: 5px solid #fff; border-radius: 27px; background: linear-gradient(120deg,#fff9e8,#f8dbe6 62%,#f5e4a6); color: #3a1825; box-shadow: 0 20px 65px rgba(46,10,26,.29); }
+.mark { display: grid; width: 52px; height: 52px; place-items: center; border-radius: 50%; background: #ffe176; font-size: 1.6rem; }
+.copy strong { display: block; margin-bottom: 5px; font: 400 1.7rem/1.1 Georgia,serif; letter-spacing: -.04em; }
+.copy p { max-width: 700px; margin: 0 0 5px; color: #593847; font-size: .83rem; line-height: 1.5; }
+.copy a { color: #8b1644; font-size: .76rem; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.actions { display: flex; flex-direction: column; gap: 8px; }
+.actions button { min-width: 180px; min-height: 44px; padding: 9px 16px; border: 2px solid white; border-radius: 999px; font-size: .76rem; font-weight: 900; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.actions button:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(58,24,37,.13); }
+.reject { background: #fffdf7; color: #3a1825; }
+.accept { background: #8b1644; color: #fff; }
+@media(max-width:700px) { .banner { grid-template-columns: 34px 1fr; gap: 9px 12px; padding: 14px; border-width: 4px; border-radius: 22px; } .mark { width: 34px; height: 34px; font-size: 1.1rem; } .copy strong { font-size: 1.4rem; } .copy p { font-size: .75rem; line-height: 1.45; } .actions { grid-column: 1/-1; flex-direction: row; } .actions button { flex: 1; min-width: 0; padding: 8px 9px; font-size: .7rem; } }
+@media(max-width:390px) { .actions { flex-direction: column; } }
