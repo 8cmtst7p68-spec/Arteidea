@@ -1,8 +1,10 @@
 "use client";
 
 import Script from "next/script";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import styles from "./instagram-feed.module.css";
+import { externalContentAllowed, externalContentEvent, setExternalContentAllowed } from "./external-content-consent";
 
 function InstagramMark({ size = 30 }: { size?: number }) {
   return <svg className={styles.instagramMark} width={size} height={size} viewBox="0 0 48 48" aria-hidden="true"><defs><radialGradient id={`instagram-feed-gradient-${size}`} cx="30%" cy="100%" r="120%"><stop offset="0" stopColor="#ffd73f"/><stop offset=".48" stopColor="#ef4774"/><stop offset="1" stopColor="#7b3db5"/></radialGradient></defs><rect width="48" height="48" rx="14" fill={`url(#instagram-feed-gradient-${size})`}/><rect x="11" y="11" width="26" height="26" rx="8" fill="none" stroke="#fff" strokeWidth="3"/><circle cx="24" cy="24" r="6" fill="none" stroke="#fff" strokeWidth="3"/><circle cx="33" cy="15" r="2" fill="#fff"/></svg>;
@@ -15,8 +17,21 @@ export function InstagramFeed() {
   const hasLoadedMoreRef = useRef(false);
   const [feedExpanded, setFeedExpanded] = useState(false);
   const [feedToggleAvailable, setFeedToggleAvailable] = useState(false);
+  const [feedEnabled, setFeedEnabled] = useState(false);
 
   useEffect(() => {
+    const sync = () => setFeedEnabled(externalContentAllowed());
+    sync();
+    window.addEventListener(externalContentEvent, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(externalContentEvent, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!feedEnabled) return;
     const frame = widgetFrameRef.current;
     if (!frame) return;
 
@@ -67,7 +82,7 @@ export function InstagramFeed() {
       observer.disconnect();
       if (retryTimer !== null) window.clearInterval(retryTimer);
     };
-  }, []);
+  }, [feedEnabled]);
 
   const toggleFeed = () => {
     const frame = widgetFrameRef.current;
@@ -105,8 +120,7 @@ export function InstagramFeed() {
       <div className={styles.intro}><p>Nuovi arrivi, idee nate in laboratorio, dettagli per le feste e scorci del negozietto: qui troverai gli aggiornamenti pubblicati da Arteidea.</p><a href="https://www.instagram.com/_arteidea_genova_/" target="_blank" rel="noreferrer"><InstagramMark size={24}/> Segui Arteidea</a></div>
     </div>
     <div ref={widgetFrameRef} className={styles.liveWidget} aria-label="Ultimi contenuti Instagram di Arteidea">
-      <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
-      <div className={`elfsight-app-${elfsightAppId}`} data-elfsight-app-lazy />
+      {feedEnabled ? <><Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" /><div className={`elfsight-app-${elfsightAppId}`} data-elfsight-app-lazy /></> : <div className={styles.consentPlaceholder}><InstagramMark size={47}/><h3>Uno sguardo al profilo Instagram</h3><p>Per mostrare i post, questo sito deve caricare il servizio esterno Elfsight. Se scegli di visualizzarli, il servizio potrà ricevere dati sulla tua visita.</p><button type="button" onClick={() => { setExternalContentAllowed(true); setFeedEnabled(true); }}>Mostra i post Instagram</button><Link href="/privacy">Come usiamo i dati</Link></div>}
       <span className={`${styles.widgetDecoration} ${styles.widgetFlower}`} aria-hidden="true">✿</span>
       <span className={`${styles.widgetDecoration} ${styles.widgetLadybug}`} aria-hidden="true">🐞</span>
       {feedToggleAvailable && <button className={styles.feedToggle} type="button" onClick={toggleFeed} aria-expanded={feedExpanded}>{feedExpanded ? "Mostra meno" : "Vedi altri post"}</button>}

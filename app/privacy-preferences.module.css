@@ -1,0 +1,9 @@
+.preferences { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin: 20px 0 22px; padding: 20px 22px; border: 2px solid #f0d2df; border-radius: 21px; background: #fff5e0; }
+.preferences strong { display: block; font-size: 1.04rem; }
+.preferences p { margin: 5px 0 9px!important; }
+.preferences span { display: inline-flex; align-items: center; min-height: 27px; padding: 5px 10px; border-radius: 999px; font-size: .72rem; font-weight: 800; }
+.active { background: #cdebd9; color: #155f43; }
+.inactive { background: #f0dce5; color: #652842; }
+.preferences button { flex: none; min-height: 44px; padding: 10px 16px; border: 2px solid #fff; border-radius: 999px; background: #8b1644; color: #fff; box-shadow: 0 7px 16px rgba(58,24,37,.12); font-weight: 800; cursor: pointer; }
+.preferences button:disabled { opacity: .55; cursor: default; }
+@media(max-width:700px) { .preferences { flex-direction: column; align-items: stretch; gap: 12px; padding: 17px; } .preferences button { width: 100%; } }

@@ -1,0 +1,75 @@
+.root { position: relative; flex: none; }
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 47px;
+  padding: 5px 17px 5px 7px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffe378, #f7c935);
+  color: #3a1825;
+  box-shadow: 0 7px 17px rgba(58,24,37,.13), inset 0 1px rgba(255,255,255,.5);
+  font-size: .78rem;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.trigger:hover { transform: translateY(-3px) rotate(-.5deg); box-shadow: 0 12px 24px rgba(58,24,37,.18); }
+.trigger:focus-visible, .close:focus-visible, .links a:focus-visible { outline: 3px solid #5ab8c8; outline-offset: 3px; }
+.triggerBug { width: 28px; height: 32px; flex: none; }
+
+.panel {
+  position: absolute;
+  top: calc(100% + 21px);
+  right: 0;
+  width: min(430px, calc(100vw - 28px));
+  max-height: calc(100dvh - 125px);
+  overflow-y: auto;
+  border: 6px solid rgba(255,255,255,.95);
+  border-radius: 32px 22px 35px 25px;
+  background: #fff8e8;
+  box-shadow: 0 27px 70px rgba(58,24,37,.28);
+  color: #3a1825;
+  z-index: 100;
+  animation: appear .35s cubic-bezier(.2,.9,.3,1.25) both;
+}
+.panelHero {
+  position: relative;
+  min-height: 151px;
+  padding: 24px 26px 21px;
+  overflow: hidden;
+  background: radial-gradient(circle at 91% 15%, rgba(239,121,88,.4), transparent 26%), linear-gradient(135deg, #401627, #8c1948);
+  color: #fffdf7;
+}
+.panelHero:after { content: "✿"; position: absolute; right: 31px; bottom: 4px; color: #f7c935; font: 900 2rem/1 Georgia,serif; transform: rotate(16deg); }
+.close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(255,255,255,.18); color: #fff; cursor: pointer; z-index: 1; }
+.close:hover { background: rgba(255,255,255,.3); }
+.heroBug { position: absolute; right: 59px; top: 31px; width: 72px; height: 82px; transform: rotate(12deg); filter: drop-shadow(0 8px 10px rgba(0,0,0,.2)); }
+.kicker { display: block; position: relative; z-index: 1; max-width: 225px; color: #f7c935; font-size: .68rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+.panel h2 { position: relative; z-index: 1; max-width: 260px; margin: 14px 0 0; color: #fffdf7; font: 400 2.18rem/.97 Georgia,'Times New Roman',serif; letter-spacing: -.05em; }
+.panel h2 em { color: #f7c935; font-weight: 400; }
+.panelBody { padding: 22px 24px 23px; background: radial-gradient(circle at 98% 99%, rgba(247,201,53,.21), transparent 35%), #fff8e8; }
+.panelBody p { margin: 0 0 19px; color: #654653; font-size: .88rem; line-height: 1.55; }
+.question { display: block; margin: 0 0 12px; color: #701137; font-size: .82rem; font-weight: 900; }
+.links { display: grid; gap: 9px; }
+.links a { display: flex; align-items: center; gap: 11px; min-height: 60px; padding: 8px 12px 8px 8px; border: 2px solid rgba(58,24,37,.11); border-radius: 17px; background: #fffdf7; color: #3a1825; box-shadow: 0 6px 14px rgba(58,24,37,.055); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.links a:hover { transform: translateX(4px); background: #fff1bf; box-shadow: 0 9px 20px rgba(58,24,37,.1); }
+.linkIcon { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 13px; background: #f5c5d6; font-size: 1.2rem; }
+.links a:nth-child(2) .linkIcon { background: #ffe48a; }
+.links a:nth-child(3) .linkIcon { background: #d1eecf; }
+.links a:nth-child(4) .linkIcon { background: #d9e7ff; }
+.linkCopy { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.linkCopy strong { font-size: .78rem; line-height: 1.25; }
+.linkCopy small { color: #745865; font-size: .69rem; }
+.links a > svg { flex: none; color: #a9154e; }
+
+@keyframes appear { from { opacity: 0; transform: translateY(-10px) scale(.96); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1120px) { .trigger { width: 47px; padding: 4px; } .trigger span { display: none; } }
+@media (max-width: 700px) { .trigger { width: 47px; height: 47px; border-radius: 17px; } .panel { position: fixed; top: 82px; right: 13px; max-height: calc(100dvh - 96px); } .heroBug { top: 75px; right: 26px; width: 52px; height: 60px; } }
+@media (max-width: 380px) { .panelHero { padding-left: 20px; } .panelBody { padding: 18px; } .heroBug { right: 39px; width: 61px; } .panel h2 { font-size: 1.9rem; } }
+@media (prefers-reduced-motion: reduce) { .panel { animation: none; } .trigger, .links a { transition: none; } }

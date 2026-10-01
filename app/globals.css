@@ -248,3 +248,6 @@ footer{background:radial-gradient(circle at 88% 12%,rgba(169,21,78,.38),transpar
 @media(min-width:701px) and (max-width:1179px){.shop-info .address{font-size:clamp(1.05rem,1.75vw,1.3rem)}}
 .shop-info .address{margin-bottom:24px}.shop-info .address+p{margin-top:0}
 @media(max-width:700px){.shop-info .address{margin-bottom:19px}}
+
+.header-actions{display:flex;align-items:center;gap:10px;flex:none}
+@media(max-width:700px){.site-header{gap:8px}.brand-logo{width:min(42vw,185px)}.header-actions{gap:8px}.nav.open+.header-actions .menu-button{background:linear-gradient(135deg,#f7c2d5,#eb8fb2)}.nav.open+.header-actions .menu-button:after{background:#8bd6}}

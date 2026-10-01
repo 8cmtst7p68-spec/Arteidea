@@ -1,0 +1,27 @@
+.page { min-height: 100vh; background: radial-gradient(circle at 5% 24%,rgba(90,184,200,.2),transparent 27%),radial-gradient(circle at 92% 68%,rgba(247,201,53,.26),transparent 29%),linear-gradient(145deg,#fff3c6,#fffdf7 48%,#f8dce7); }
+.hero { position: relative; overflow: hidden; margin: 28px 5vw 0; padding: clamp(34px,5vw,70px); border: 7px solid rgba(255,255,255,.84); border-radius: 42px 30px 45px 34px; background: radial-gradient(circle at 92% 20%,rgba(239,121,88,.28),transparent 27%),linear-gradient(125deg,#3a1825,#78133e 69%,#9f2052); color: white; box-shadow: 0 22px 55px rgba(58,24,37,.2); }
+.hero:after { content: "✿"; position: absolute; right: 5%; top: 8%; color: var(--yellow); font: 900 clamp(4rem,9vw,8rem)/1 Georgia,serif; transform: rotate(17deg); opacity: .8; }
+.eyebrow { position: relative; z-index: 1; display: block; color: var(--yellow); font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.hero h1 { position: relative; z-index: 1; max-width: 900px; margin: 14px 0 18px; font-size: clamp(3.1rem,6vw,6rem); line-height: .98; }
+.hero h1 em { color: var(--yellow); }
+.hero p { position: relative; z-index: 1; max-width: 680px; margin: 0; color: #f5e6ec; font-size: clamp(1rem,1.3vw,1.2rem); line-height: 1.6; }
+.content { display: grid; gap: 24px; width: min(1100px,90vw); margin: 0 auto; padding: 52px 0 85px; }
+.card { padding: clamp(24px,3vw,39px); border: 5px solid rgba(255,255,255,.88); border-radius: 31px 22px 35px 26px; background: #fffdf7; box-shadow: 0 15px 40px rgba(58,24,37,.09); }
+.card:nth-child(2n) { background: #fff4d4; border-radius: 24px 35px 27px 33px; }
+.card h2 { margin: 0 0 16px; color: var(--ink); font-size: clamp(1.75rem,3vw,2.6rem); line-height: 1.08; }
+.card h3 { margin: 22px 0 8px; font: 700 1.05rem Arial,Helvetica,sans-serif; }
+.card p, .card li { color: #60424f; font-size: .96rem; line-height: 1.7; }
+.card p { margin: 0 0 15px; }.card p:last-child { margin-bottom: 0; }
+.card ul, .card ol { margin: 0 0 16px; padding-left: 23px; }
+.card a:not(.button) { color: #8b1644; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.card strong { color: var(--ink); }
+.columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.columns .card { min-width: 0; }
+.noticeCard { text-align: center; }
+.noticeCard h2, .noticeCard p { text-align: left; }
+.noticeImage { display: block; width: min(100%,595px); height: auto; margin: 24px auto 20px; border: 1px solid rgba(58,24,37,.1); box-shadow: 0 18px 42px rgba(58,24,37,.14); }
+.noticeActions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.noticeActions a { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; padding: 10px 17px; border: 2px solid #fff; border-radius: 999px; background: var(--berry); color: white!important; font-size: .8rem; font-weight: 900; text-decoration: none!important; box-shadow: 0 8px 20px rgba(58,24,37,.12); }
+.noticeActions a:nth-child(2) { background: #ffe17a; color: var(--ink)!important; }
+.small { font-size: .8rem!important; }
+@media(max-width:700px) { .hero { margin: 14px 4vw 0; padding: 33px 24px; border-width: 5px; border-radius: 30px 22px 34px 25px; } .hero:after { top: auto; bottom: 9px; right: 17px; opacity: .38; } .hero h1 { font-size: clamp(2.75rem,12vw,4rem); } .content { width: 92vw; gap: 15px; padding: 26px 0 57px; } .columns { grid-template-columns: 1fr; gap: 15px; } .card { padding: 23px 20px; border-width: 4px; } .noticeImage { margin: 16px auto; } }
